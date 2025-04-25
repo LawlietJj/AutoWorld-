@@ -1,9 +1,0 @@
-@font-face {
-    font-family: 'Orplid Pro';
-    src: local('Orplid Pro Fill'), local('Orplid-Pro-Fill'),
-        url('OrplidPro-Fill.woff2') format('woff2'),
-        url('OrplidPro-Fill.woff') format('woff'),
-        url('OrplidPro-Fill.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-  }
