@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Car Details</title>
+  <link rel="stylesheet" href="./details.css" />
+</head>
+<body>
+
+    <div id="togglenavs">
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="./dealers.html">Dealers</a></li>
+          <li><a href=".catalouge.html">Car Catalogue</a></li>
+          <li><a href="./Contact us.html">Contact Us</a></li>
+          <li >Terms <span id="t1">▼</span>
+            <div class="mid">
+              <div class="term">
+                <a href="./Finance.html">Warranty And Insurance</a>
+                <a href="./payment details.html">Bank Payment Details</a>
+              </div>
+            </div>
+          </li>
+        </ul>
+        <div class="logs">
+          <hr />
+          <a href="#"><h3>Login</h3></a>
+          <hr />
+        </div>
+      </div>
+    
+      <div class="container">
+        <!-- Navbar -->
+        <div class="navbar">
+          <div class="logo">
+            <img class="pic" src="../assets/AutoWorld-logo/vector/default-monochrome-white.svg" alt="logo"/>
+          </div>
+          <div class="nav-tags">
+          <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="./dealers.html">Dealers</a></li>
+            <li><a href="./catalouge.html">Car Catalogue</a></li>
+            <li><a href="./Contact us.html">Contact Us</a></li>
+            <li class="li-t" >Terms <span id="t2">▼</span>
+              <div class="mid1">
+                <div class="term1">
+                  <a href="./Finance.html">Warranty And Insurance</a>
+                  <a href="./payment details.html">Bank Payment Details</a>
+                </div>
+              </div>
+            </li>
+        </ul>
+            </ul>
+          </div>
+          <div id="menubar">
+            <img class="menu" src="../assets/menu-fries-svgrepo-com.svg" alt="menu"/>
+          </div>
+          <div class="search">
+            <h2>Search</h2>
+          </div>
+        </div>
+            <div class="img-div">
+                <!-- <img src="../assets/vids/car.png" alt="car Image"> -->
+            </div>
+            <div class="tags">
+                <p><a href="../index.html">Home <span>›</span></a></p>
+                <p><a href="./details.html"> Car-Details </a></p>
+            </div>
+            <div class="deet-container">
+                <div id="carDetails" class="car-details"></div>
+              
+                <div class="back-btn">
+                  <button onclick="goBack()">Back to Car Listings</button>
+                </div>
+              </div>
+        
+            <!-- Footer -->
+            <footer class="footer">
+              <div class="footer-container">
+                <div class="footer-top">
+                  <img class="pic" src="../assets/AutoWorld-logo/vector/default-monochrome-white.svg" alt="logo"/>
+            
+                  <ul class="social-links">
+                    <li><a href="#" target="_blank" rel="noreferrer" aria-label="Instagram">Instagram</a></li>
+                    <li><a href="#" target="_blank" rel="noreferrer" aria-label="Twitter">Twitter</a></li>
+                    <li><a href="#" target="_blank" rel="noreferrer" aria-label="FacBook">FaceBook</a></li>
+                    <li><a href="#" target="_blank" rel="noreferrer" aria-label="Whatsapp">Whatsapp</a></li>
+                  </ul>
+                </div>
+            
+                <div class="footer-columns">
+                  <div class="footer-column">
+                    <p class="column-title">Top Brands</p>
+                    <ul>
+                            <li>Mercedes Benz</li>
+                            <li>Rolls Royce</li>
+                            <li>BMW</li>
+                            <li>Toyota</li>
+                            <li>Hyundai</li>
+                            <li>Lexus</li>
+                            <li>Honda</li>
+                    </ul>
+                  </div>
+            
+                  <div class="footer-column">
+                    <p class="column-title">Company</p>
+                    <ul>
+                      <li><a href="#">About</a></li>
+                      <li><a href="#">Meet the Team</a></li>
+                      <li><a href="#">Accounts Review</a></li>
+                    </ul>
+                  </div>
+            
+                  <div class="footer-column">
+                    <p class="column-title">Helpful Links</p>
+                    <ul>
+                      <li><a href="#">Contact</a></li>
+                      <li><a href="./Finance.html">Warranty</a></li>
+                      <li><a href="./Finance.html">Delears</a></li>
+                      <li><a href="./bankdetails.html">Bank Details</a></li>
+                      <li><a href="./payment details.html">Payment Details</a></li>
+                    </ul>
+                  </div>
+            
+                  <div class="footer-column">
+                    <p class="column-title">Location</p>
+                    <ul>
+                            <li>Fagge Kano Nigeria</li>
+                            <li>Island Lagos Nigeria</li>
+                            <li>Bwari,  Abuja Nigeria</li>
+                            <li>Dubai Auto Zone, U.A.E</li>
+                            <li>Cape Caost Ghana</li>
+                  </div>
+                </div>
+            
+                <p class="footer-copy">&copy; 2025.AutoWorld All Rights Reserve</p>
+              </div>
+            </footer>
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  const car = JSON.parse(localStorage.getItem("selectedCar"));
+  const carDetailsElement = document.getElementById("carDetails");
+
+  if (!car) {
+    carDetailsElement.innerHTML = "<h1>No car details found!</h1>";
+  } else {
+    const imageUrl = car.image || "fallback.jpg";
+    const safeMake = car.make.toLowerCase().replace(/ /g, "-");
+    const safeModel = car.model.toLowerCase().replace(/ /g, "-");
+
+    // Initial static car data
+    carDetailsElement.innerHTML = `
+      <img src="${imageUrl}" alt="${car.make} ${car.model}" class="car-image" onerror="this.src='fallback.jpg'">
+      <h1>${car.make} ${car.model} (${car.year})</h1>
+      <p><strong>Trim:</strong> ${car.trim}</p>
+      <div id="additionalSpecs"><p>Loading specifications...</p></div>
+    `;
+
+    // Dynamically create a <script> tag to fetch data via JSONP
+    const script = document.createElement("script");
+    script.src = `https://www.carqueryapi.com/api/0.3/?callback=handleCarQueryData&cmd=getTrims&make=${safeMake}&model=${safeModel}&year=${car.year}`;
+    document.body.appendChild(script);
+  }
+
+  // JSONP Callback
+  function handleCarQueryData(response) {
+  const trims = response.Trims || [];
+
+  if (trims.length === 0) {
+    document.getElementById("additionalSpecs").innerHTML = "<p>No additional specifications found.</p>";
+    return;
+  }
+
+  const specs = trims[0];
+
+  document.getElementById("additionalSpecs").innerHTML = `
+    <h2>Technical Specifications</h2>
+    <p><strong>Body:</strong> ${specs.model_body}</p>
+    <p><strong>Seats:</strong> ${specs.model_seats}</p>
+    <p><strong>Doors:</strong> ${specs.model_doors}</p>
+    <p><strong>Weight:</strong> ${specs.model_weight_kg} kg</p>
+    <p><strong>Top Speed:</strong> ${specs.model_top_speed_kph} km/h</p>
+    <p><strong>0–100 km/h:</strong> ${specs.model_acceleration_0_to_100_kph} s</p>
+    <p><strong>Fuel Efficiency (Mixed):</strong> ${specs.model_lkm_mixed} L/100km</p>
+    <p><strong>Fuel Tank Capacity:</strong> ${specs.model_fuel_cap_l} L</p>
+    <p><strong>Engine:</strong> ${specs.model_engine_position} ${specs.model_engine_type}, ${specs.model_engine_cc} cc</p>
+    <p><strong>Power:</strong> ${specs.model_engine_power_ps} PS</p>
+    <p><strong>Torque:</strong> ${specs.model_engine_torque_nm} Nm</p>
+    <p><strong>Fuel Type:</strong> ${specs.model_engine_fuel}</p>
+    <p><strong>Transmission:</strong> ${specs.model_transmission_type}</p>
+    <p><strong>Drivetrain:</strong> ${specs.model_drive}</p>
+  `;
+}
+
+
+  function goBack() {
+    window.location.href = "index.html"; // Update with your actual car listing page path
+  }
+</script>
+
+</body>
+</html>
